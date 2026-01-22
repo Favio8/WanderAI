@@ -1,0 +1,130 @@
+/**
+ * WanderAI 项目全局样式变量
+ * 基于 uni-app 内置样式变量扩展
+ */
+
+/* ==================== WanderAI 主题颜色 ==================== */
+
+/* 主色调 */
+$uni-color-primary: #63ec13; // 品牌绿色
+$uni-color-primary-dark: #4db80e;
+$uni-color-primary-light: #8bf54d;
+
+/* 辅助色 - 鼠尾草绿系列 */
+$uni-color-sage: #8BA88E;
+$uni-color-sage-50: #f4f7f2;
+$uni-color-sage-100: #e5eadf;
+$uni-color-sage-200: #cdd9c2;
+$uni-color-sage-300: #abc09b;
+$uni-color-sage-400: #86a273;
+$uni-color-sage-500: #708961;
+$uni-color-sage-600: #526d42;
+$uni-color-sage-700: #425736;
+
+/* 中性色 */
+$uni-color-deep-forest: #131811; // 深林色
+$uni-color-background-light: #f7f8f6; // 浅色背景
+$uni-color-background-dark: #172210; // 深色背景
+$uni-color-cream: #FDF6E3; // 奶油黄
+
+/* 行为相关颜色 */
+$uni-color-success: #4cd964;
+$uni-color-warning: #f0ad4e;
+$uni-color-error: #dd524d;
+$uni-color-info: #909399;
+
+/* 文字基本颜色 */
+$uni-text-color: #131811; // 基本色
+$uni-text-color-inverse: #ffffff; // 反色
+$uni-text-color-grey: #999999; // 辅助灰色
+$uni-text-color-placeholder: #808080;
+$uni-text-color-disable: #c0c0c0;
+
+/* 背景颜色 */
+$uni-bg-color: #ffffff;
+$uni-bg-color-grey: #f8f8f8;
+$uni-bg-color-hover: #f1f1f1;
+$uni-bg-color-mask: rgba(0, 0, 0, 0.4);
+
+/* 边框颜色 */
+$uni-border-color: #e5e5e5;
+
+/* ==================== 尺寸变量 ==================== */
+
+/* 文字尺寸 */
+$uni-font-size-xxs: 10px;
+$uni-font-size-xs: 11px;
+$uni-font-size-sm: 12px;
+$uni-font-size-base: 14px;
+$uni-font-size-lg: 16px;
+$uni-font-size-xl: 18px;
+$uni-font-size-xxl: 20px;
+
+/* 间距 */
+$uni-spacing-xs: 4px;
+$uni-spacing-sm: 8px;
+$uni-spacing-md: 12px;
+$uni-spacing-lg: 16px;
+$uni-spacing-xl: 20px;
+$uni-spacing-xxl: 24px;
+
+/* Border Radius */
+$uni-border-radius-sm: 4px;
+$uni-border-radius-base: 8px;
+$uni-border-radius-md: 12px;
+$uni-border-radius-lg: 16px;
+$uni-border-radius-xl: 24px;
+$uni-border-radius-xxl: 32px;
+$uni-border-radius-circle: 50%;
+
+/* 阴影 */
+$uni-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+$uni-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.08);
+$uni-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+/* ==================== 通用工具类 ==================== */
+
+/* 安全区域 */
+.safe-area-inset-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 无滚动条 */
+.no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 玻璃态效果 */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 渐变背景 */
+.gradient-primary {
+  background: linear-gradient(135deg, $uni-color-primary 0%, $uni-color-primary-dark 100%);
+}
+
+.gradient-sage {
+  background: linear-gradient(135deg, $uni-color-sage-400 0%, $uni-color-sage-600 100%);
+}
+
+/* 文本省略 */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-ellipsis-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}

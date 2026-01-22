@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none">
+  <!-- 简约版 - 适合小尺寸使用 -->
+  <circle cx="128" cy="128" r="100" stroke="#63ec13" stroke-width="8" fill="none"/>
+
+  <!-- 交叉航线 -->
+  <path d="M75 100 Q 128 70 181 100" stroke="#63ec13" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M75 156 Q 128 186 181 156" stroke="#63ec13" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M100 75 Q 70 128 100 181" stroke="#708961" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M156 75 Q 186 128 156 181" stroke="#708961" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+  <!-- 中心点 -->
+  <circle cx="128" cy="128" r="16" fill="#63ec13"/>
+
+  <!-- 四个星点 -->
+  <circle cx="85" cy="85" r="6" fill="#63ec13"/>
+  <circle cx="171" cy="85" r="5" fill="#63ec13" opacity="0.7"/>
+  <circle cx="85" cy="171" r="5" fill="#63ec13" opacity="0.7"/>
+  <circle cx="171" cy="171" r="6" fill="#63ec13"/>
+</svg>

@@ -1,0 +1,146 @@
+{
+  "pages": [
+    {
+      "path": "pages/splash/splash",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom",
+        "backgroundColor": "#ffffff",
+        "backgroundTextStyle": "light"
+      }
+    },
+    {
+      "path": "pages/chat/chat",
+      "style": {
+        "navigationBarTitleText": "漫游向导",
+        "navigationStyle": "custom",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/explore/explore",
+      "style": {
+        "navigationBarTitleText": "探索",
+        "navigationStyle": "custom",
+        "backgroundColor": "#f7f8f6"
+      }
+    },
+    {
+      "path": "pages/album/album",
+      "style": {
+        "navigationBarTitleText": "智能相册",
+        "navigationStyle": "custom",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/profile/profile",
+      "style": {
+        "navigationBarTitleText": "个人中心",
+        "navigationStyle": "custom",
+        "backgroundColor": "#f7f8f6"
+      }
+    },
+    {
+      "path": "pages/itinerary/itinerary",
+      "style": {
+        "navigationBarTitleText": "行程计划",
+        "navigationStyle": "custom",
+        "backgroundColor": "#f7f8f6"
+      }
+    },
+    {
+      "path": "pages/favorites/favorites",
+      "style": {
+        "navigationBarTitleText": "我的收藏",
+        "navigationStyle": "custom",
+        "backgroundColor": "#f7f8f6"
+      }
+    },
+    {
+      "path": "pages/orders/orders",
+      "style": {
+        "navigationBarTitleText": "我的订单",
+        "navigationStyle": "custom",
+        "backgroundColor": "#f7f8f6"
+      }
+    },
+    {
+      "path": "pages/settings/settings",
+      "style": {
+        "navigationBarTitleText": "设置",
+        "navigationStyle": "custom",
+        "backgroundColor": "#f7f8f6"
+      }
+    },
+    {
+      "path": "pages/destination/destination",
+      "style": {
+        "navigationBarTitleText": "目的地详情",
+        "navigationStyle": "custom",
+        "backgroundColor": "#f7f8f6"
+      }
+    },
+    {
+      "path": "pages/album/memory-detail",
+      "style": {
+        "navigationBarTitleText": "回忆详情",
+        "navigationStyle": "custom",
+        "backgroundColor": "#ffffff"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "漫游奇点",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#708961",
+    "selectedColor": "#63ec13",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "fontSize": "10px",
+    "spacing": "2px",
+    "height": "60px",
+    "list": [
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "首页",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/explore/explore",
+        "text": "探索",
+        "iconPath": "static/tabbar/explore.png",
+        "selectedIconPath": "static/tabbar/explore-active.png"
+      },
+      {
+        "pagePath": "pages/itinerary/itinerary",
+        "text": "行程",
+        "iconPath": "static/tabbar/itinerary.png",
+        "selectedIconPath": "static/tabbar/itinerary-active.png"
+      },
+      {
+        "pagePath": "pages/album/album",
+        "text": "相册",
+        "iconPath": "static/tabbar/album.png",
+        "selectedIconPath": "static/tabbar/album-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "static/tabbar/profile.png",
+        "selectedIconPath": "static/tabbar/profile-active.png"
+      }
+    ]
+  },
+  "condition": {
+    "current": 0,
+    "list": []
+  }
+}

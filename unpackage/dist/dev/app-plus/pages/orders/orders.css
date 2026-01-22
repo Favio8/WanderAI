@@ -1,0 +1,351 @@
+/**
+ * WanderAI 项目全局样式变量
+ * 基于 uni-app 内置样式变量扩展
+ */
+/* ==================== WanderAI 主题颜色 ==================== */
+/* 主色调 */
+/* 辅助色 - 鼠尾草绿系列 */
+/* 中性色 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* ==================== 尺寸变量 ==================== */
+/* 文字尺寸 */
+/* 间距 */
+/* Border Radius */
+/* 阴影 */
+/* ==================== 通用工具类 ==================== */
+/* 安全区域 */
+.safe-area-inset-bottom[data-v-1acc51a1] {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 无滚动条 */
+.no-scrollbar[data-v-1acc51a1] {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar[data-v-1acc51a1]::-webkit-scrollbar {
+  display: none;
+}
+
+/* 玻璃态效果 */
+.glass-effect[data-v-1acc51a1] {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 渐变背景 */
+.gradient-primary[data-v-1acc51a1] {
+  background: linear-gradient(135deg, #63ec13 0%, #4db80e 100%);
+}
+.gradient-sage[data-v-1acc51a1] {
+  background: linear-gradient(135deg, #86a273 0%, #526d42 100%);
+}
+
+/* 文本省略 */
+.text-ellipsis[data-v-1acc51a1] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-ellipsis-2[data-v-1acc51a1] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* ==================== Android App 布局适配说明 ====================
+ * 问题1: 100vh 在 Android WebView 中计算错误
+ * 解决: 使用 height: 100% + flex 布局替代
+ *
+ * 问题2: 顶部被状态栏遮挡（自定义导航栏需要预留状态栏高度）
+ * 解决: 添加 status-bar-placeholder 动态占位，移除 sticky 定位
+ *
+ * 问题3: 底部内容被虚拟按键/安全区遮挡（非 TabBar 页面）
+ * 解决: content-area 添加 safe-area-inset-bottom 的 padding
+ * =============================================================== */
+.orders-container[data-v-1acc51a1] {
+  display: flex;
+  flex-direction: column;
+  /* Android 适配: 使用 100% 替代 100vh，避免 WebView 计算错误 */
+  height: 100%;
+  background-color: #f7f8f6;
+}
+
+/* 顶部状态栏占位（Android 适配：预留状态栏高度，避免内容被遮挡） */
+.status-bar-placeholder[data-v-1acc51a1] {
+  width: 100%;
+  flex-shrink: 0;
+  /* 高度由 JavaScript 动态设置 */
+}
+
+/* 顶部导航栏 */
+.app-bar[data-v-1acc51a1] {
+  /* Android 适配: 移除 sticky 定位，状态栏占位已处理顶部间距 */
+  position: relative;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: rgba(247, 248, 246, 0.8);
+  -webkit-backdrop-filter: blur(0.625rem);
+          backdrop-filter: blur(0.625rem);
+}
+.bar-btn[data-v-1acc51a1] {
+  padding: 0.5rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.bar-icon[data-v-1acc51a1] {
+  font-size: 0.875rem;
+  color: #131811;
+}
+.bar-title[data-v-1acc51a1] {
+  color: #131811;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+/* 标签栏 */
+.tabs-container[data-v-1acc51a1] {
+  background-color: #ffffff;
+  padding: 0 1rem;
+  border-bottom: 0.03125rem solid rgba(0, 0, 0, 0.05);
+}
+.tabs-list[data-v-1acc51a1] {
+  display: flex;
+  gap: 1rem;
+}
+.tab-btn[data-v-1acc51a1] {
+  position: relative;
+  padding: 1rem 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.tab-text[data-v-1acc51a1] {
+  color: #708961;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.tab-btn-active .tab-text[data-v-1acc51a1] {
+  color: #131811;
+  font-weight: 700;
+}
+.tab-badge[data-v-1acc51a1] {
+  background-color: #63ec13;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.375rem;
+  min-width: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.badge-text[data-v-1acc51a1] {
+  color: #131811;
+  font-size: 0.625rem;
+  font-weight: 700;
+}
+
+/* 内容滚动区 */
+.content-scroll[data-v-1acc51a1] {
+  /* Android 适配: scroll-view 需要明确的高度才能滚动，使用 flex: 1 获取剩余空间 */
+  flex: 1;
+  /* 确保 scroll-view 有最小高度，防止内容为空时无法滚动 */
+  min-height: 0;
+  /* uni-app scroll-view 滚动修复 */
+  height: 0;
+}
+.content-area[data-v-1acc51a1] {
+  padding: 1.5rem;
+  /* Android 适配: 使用 CSS 环境变量添加底部安全区，避免内容被虚拟按键遮挡 */
+  padding-bottom: calc(7.5rem + constant(safe-area-inset-bottom));
+  padding-bottom: calc(7.5rem + env(safe-area-inset-bottom));
+}
+
+/* 加载状态 */
+.loading-container[data-v-1acc51a1] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6.25rem 0;
+}
+.loading-text[data-v-1acc51a1] {
+  color: #708961;
+  font-size: 0.875rem;
+}
+
+/* 空状态 */
+.empty-state[data-v-1acc51a1] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6.25rem 0;
+  text-align: center;
+}
+.empty-icon[data-v-1acc51a1] {
+  font-size: 3.75rem;
+  margin-bottom: 1rem;
+  opacity: 0.4;
+}
+.empty-title[data-v-1acc51a1] {
+  color: #131811;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.empty-subtitle[data-v-1acc51a1] {
+  color: #708961;
+  font-size: 0.75rem;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.empty-btn[data-v-1acc51a1] {
+  background-color: #63ec13;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 16px rgba(99, 236, 19, 0.3);
+}
+.empty-btn-text[data-v-1acc51a1] {
+  color: #131811;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* 订单列表 */
+.orders-list[data-v-1acc51a1] {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.order-card[data-v-1acc51a1] {
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 0.03125rem solid rgba(0, 0, 0, 0.05);
+}
+.order-header[data-v-1acc51a1] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.order-id[data-v-1acc51a1] {
+  display: flex;
+  align-items: center;
+}
+.id-text[data-v-1acc51a1] {
+  color: #708961;
+  font-size: 0.75rem;
+}
+.order-status[data-v-1acc51a1] {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+}
+.status-pending[data-v-1acc51a1] {
+  background-color: #fff7e6;
+}
+.status-paid[data-v-1acc51a1] {
+  background-color: #e6f7ff;
+}
+.status-completed[data-v-1acc51a1] {
+  background-color: #f6ffed;
+}
+.status-text[data-v-1acc51a1] {
+  font-size: 0.625rem;
+  font-weight: 700;
+}
+.status-pending .status-text[data-v-1acc51a1] {
+  color: #fa8c16;
+}
+.status-paid .status-text[data-v-1acc51a1] {
+  color: #1890ff;
+}
+.status-completed .status-text[data-v-1acc51a1] {
+  color: #52c41a;
+}
+.order-content[data-v-1acc51a1] {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.order-image[data-v-1acc51a1] {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.75rem;
+  flex-shrink: 0;
+}
+.order-info[data-v-1acc51a1] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+.order-title[data-v-1acc51a1] {
+  color: #131811;
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: block;
+}
+.order-meta[data-v-1acc51a1] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.meta-item[data-v-1acc51a1] {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.meta-icon[data-v-1acc51a1] {
+  font-size: 0.625rem;
+  color: #708961;
+}
+.meta-text[data-v-1acc51a1] {
+  color: #708961;
+  font-size: 0.75rem;
+}
+.order-price[data-v-1acc51a1] {
+  margin-top: auto;
+}
+.price-text[data-v-1acc51a1] {
+  color: #ff4d4f;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.order-footer[data-v-1acc51a1] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.75rem;
+  border-top: 0.03125rem solid rgba(0, 0, 0, 0.05);
+}
+.order-time[data-v-1acc51a1] {
+  color: #999999;
+  font-size: 0.75rem;
+}
+.order-action-btn[data-v-1acc51a1] {
+  background-color: #63ec13;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 16px rgba(99, 236, 19, 0.3);
+}
+.order-action-btn[data-v-1acc51a1]:active {
+  transform: scale(0.98);
+}
+.action-text[data-v-1acc51a1] {
+  color: #131811;
+  font-size: 0.75rem;
+  font-weight: 700;
+}

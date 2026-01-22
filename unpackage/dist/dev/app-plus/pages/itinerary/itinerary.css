@@ -1,0 +1,950 @@
+/**
+ * WanderAI 项目全局样式变量
+ * 基于 uni-app 内置样式变量扩展
+ */
+/* ==================== WanderAI 主题颜色 ==================== */
+/* 主色调 */
+/* 辅助色 - 鼠尾草绿系列 */
+/* 中性色 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* ==================== 尺寸变量 ==================== */
+/* 文字尺寸 */
+/* 间距 */
+/* Border Radius */
+/* 阴影 */
+/* ==================== 通用工具类 ==================== */
+/* 安全区域 */
+.safe-area-inset-bottom[data-v-9bfb8cb3] {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 无滚动条 */
+.no-scrollbar[data-v-9bfb8cb3] {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar[data-v-9bfb8cb3]::-webkit-scrollbar {
+  display: none;
+}
+
+/* 玻璃态效果 */
+.glass-effect[data-v-9bfb8cb3] {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 渐变背景 */
+.gradient-primary[data-v-9bfb8cb3] {
+  background: linear-gradient(135deg, #63ec13 0%, #4db80e 100%);
+}
+.gradient-sage[data-v-9bfb8cb3] {
+  background: linear-gradient(135deg, #86a273 0%, #526d42 100%);
+}
+
+/* 文本省略 */
+.text-ellipsis[data-v-9bfb8cb3] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-ellipsis-2[data-v-9bfb8cb3] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* ==================== Android App 布局适配说明 ====================
+ * 问题1: 100vh 在 Android WebView 中计算错误
+ * 解决: 使用 height: 100% + flex 布局替代
+ *
+ * 问题2: 顶部被状态栏遮挡（自定义导航栏需要预留状态栏高度）
+ * 解决: 添加 status-bar-placeholder 动态占位，移除 sticky 定位
+ *
+ * 问题3: 底部内容被 TabBar + 虚拟按键/安全区遮挡
+ * 解决: 使用 CSS calc() 计算 TabBar 高度(60px) + 安全区
+ * =============================================================== */
+.itinerary-container[data-v-9bfb8cb3] {
+  display: flex;
+  flex-direction: column;
+  /* Android 适配: 使用 100% 替代 100vh，避免 WebView 计算错误 */
+  height: 100%;
+  background-color: #f7f8f6;
+}
+
+/* 顶部状态栏占位（Android 适配：预留状态栏高度，避免内容被遮挡） */
+.status-bar-placeholder[data-v-9bfb8cb3] {
+  width: 100%;
+  flex-shrink: 0;
+  /* 高度由 JavaScript 动态设置（uni.getSystemInfoSync().statusBarHeight） */
+}
+
+/* 头部 */
+.header[data-v-9bfb8cb3] {
+  /* Android 适配: 移除 sticky 定位，状态栏占位已处理顶部间距 */
+  position: relative;
+  z-index: 30;
+  background-color: rgba(247, 248, 246, 0.95);
+  /* Android 兼容修复：backdrop-filter 在 Android WebView 中会导致 z-index 层叠上下文异常 */
+  -webkit-backdrop-filter: blur(0.625rem);
+          backdrop-filter: blur(0.625rem);
+  /* 非 Android 平台生效 */
+  padding: 1rem;
+  padding-top: 1.5rem;
+  /* Android 适配: 确保 header 不会被压缩，让 scroll-view 获得正确高度 */
+  flex-shrink: 0;
+}
+
+/* Android 专用：禁用 backdrop-filter，使用纯色背景 */
+.header-android[data-v-9bfb8cb3] {
+  background-color: #f7f8f6;
+  /* 纯色替代半透明+模糊 */
+}
+.header-top[data-v-9bfb8cb3] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.header-btn[data-v-9bfb8cb3] {
+  padding: 0.5rem;
+  background-color: transparent;
+  border-radius: 50%;
+}
+.header-btn[data-v-9bfb8cb3]:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.btn-icon[data-v-9bfb8cb3] {
+  font-size: 1rem;
+  color: #131811;
+}
+.header-center[data-v-9bfb8cb3] {
+  text-align: center;
+}
+.header-title[data-v-9bfb8cb3] {
+  display: block;
+  color: #131811;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.header-subtitle[data-v-9bfb8cb3] {
+  display: block;
+  color: #708961;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 0.125rem;
+}
+
+/* 视图切换 */
+.view-toggle[data-v-9bfb8cb3] {
+  display: flex;
+  height: 3rem;
+  background-color: #e5eadf;
+  border-radius: 1rem;
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+}
+.toggle-option[data-v-9bfb8cb3] {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+}
+.toggle-active[data-v-9bfb8cb3] {
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.toggle-icon[data-v-9bfb8cb3] {
+  font-size: 1rem;
+}
+.toggle-text[data-v-9bfb8cb3] {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.toggle-active .toggle-text[data-v-9bfb8cb3] {
+  color: #131811;
+  font-weight: 700;
+}
+.toggle-option[data-v-9bfb8cb3]:not(.toggle-active) {
+  color: #708961;
+}
+
+/* 日期选择器 */
+.day-selector[data-v-9bfb8cb3] {
+  white-space: nowrap;
+  padding-bottom: 0.5rem;
+}
+.day-list[data-v-9bfb8cb3] {
+  display: inline-flex;
+  gap: 0.75rem;
+}
+.day-btn[data-v-9bfb8cb3] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 4rem;
+  height: 4.5rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  flex-shrink: 0;
+}
+.day-btn-active[data-v-9bfb8cb3] {
+  background-color: #63ec13;
+  box-shadow: 0 4px 16px rgba(99, 236, 19, 0.3);
+}
+.day-label[data-v-9bfb8cb3] {
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: #708961;
+}
+.day-label-active[data-v-9bfb8cb3] {
+  color: #131811;
+}
+.day-number[data-v-9bfb8cb3] {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #708961;
+}
+.day-number-active[data-v-9bfb8cb3] {
+  color: #131811;
+}
+
+/* 时间轴 */
+.timeline-scroll[data-v-9bfb8cb3] {
+  /* Android 适配: scroll-view 需要明确的高度才能滚动，使用 flex: 1 获取剩余空间 */
+  flex: 1;
+  /* 确保 scroll-view 有最小高度，防止内容为空时无法滚动 */
+  min-height: 0;
+  /* uni-app scroll-view 滚动修复 */
+  height: 0;
+}
+.timeline-container[data-v-9bfb8cb3] {
+  padding: 1rem 1.5rem;
+  /* Android 适配: 底部预留 TabBar(60px = 120rpx) + 安全区 + 额外间距 */
+  padding-bottom: calc(6.875rem + constant(safe-area-inset-bottom));
+  padding-bottom: calc(6.875rem + env(safe-area-inset-bottom));
+  position: relative;
+}
+.timeline-line[data-v-9bfb8cb3] {
+  position: absolute;
+  left: 2.9375rem;
+  top: 1rem;
+  bottom: 1rem;
+  width: 0.125rem;
+  border-left: 0.125rem dashed rgba(0, 0, 0, 0.1);
+}
+.timeline-item[data-v-9bfb8cb3] {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+.time-label[data-v-9bfb8cb3] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.5rem;
+  width: 2.5rem;
+  flex-shrink: 0;
+}
+.time-text[data-v-9bfb8cb3] {
+  color: #131811;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.period-text[data-v-9bfb8cb3] {
+  color: #708961;
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-top: 0.125rem;
+}
+
+/* 行程卡片 */
+.item-card[data-v-9bfb8cb3] {
+  padding: 0.75rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 0.03125rem solid rgba(0, 0, 0, 0.05);
+}
+.card-ai[data-v-9bfb8cb3] {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(99, 236, 19, 0.1) 100%);
+  border-color: rgba(99, 236, 19, 0.3);
+  position: relative;
+}
+.ai-badge[data-v-9bfb8cb3] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(99, 236, 19, 0.2);
+  padding: 0.1875rem 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+.ai-badge-text[data-v-9bfb8cb3] {
+  color: #63ec13;
+  font-size: 0.4375rem;
+  font-weight: 700;
+}
+.card-content[data-v-9bfb8cb3] {
+  display: flex;
+  gap: 0.625rem;
+}
+.card-icon[data-v-9bfb8cb3] {
+  width: 2.25rem;
+  height: 2.25rem;
+  background-color: #f4f7f2;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.icon-image[data-v-9bfb8cb3] {
+  width: 100%;
+  height: 100%;
+}
+.icon-placeholder[data-v-9bfb8cb3] {
+  font-size: 1.125rem;
+}
+.card-info[data-v-9bfb8cb3] {
+  flex: 1;
+  min-width: 0;
+}
+.card-header[data-v-9bfb8cb3] {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.1875rem;
+}
+.card-title[data-v-9bfb8cb3] {
+  color: #131811;
+  font-size: 0.875rem;
+  font-weight: 700;
+  flex: 1;
+}
+.card-actions[data-v-9bfb8cb3] {
+  display: flex;
+  gap: 0.25rem;
+}
+.action-btn[data-v-9bfb8cb3] {
+  padding: 0.25rem;
+  background-color: transparent;
+  border-radius: 0.25rem;
+}
+.action-btn[data-v-9bfb8cb3]:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.action-icon[data-v-9bfb8cb3] {
+  font-size: 0.75rem;
+}
+.card-desc[data-v-9bfb8cb3] {
+  color: #708961;
+  font-size: 0.6875rem;
+  display: block;
+  margin-bottom: 0.3125rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.card-meta[data-v-9bfb8cb3] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.meta-tag[data-v-9bfb8cb3] {
+  background-color: rgba(255, 152, 0, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+.tag-text[data-v-9bfb8cb3] {
+  color: #ff9800;
+  font-size: 0.5625rem;
+  font-weight: 700;
+}
+.meta-duration[data-v-9bfb8cb3] {
+  color: #999999;
+  font-size: 0.5625rem;
+}
+
+/* AI 操作按钮 */
+.ai-actions[data-v-9bfb8cb3] {
+  display: flex;
+  gap: 0.375rem;
+  margin-top: 0.625rem;
+}
+.ai-accept-btn[data-v-9bfb8cb3] {
+  flex: 1;
+  background-color: #63ec13;
+  padding: 0.5625rem;
+  border-radius: 0.625rem;
+}
+.ai-btn-text[data-v-9bfb8cb3] {
+  color: #131811;
+  font-size: 0.625rem;
+  font-weight: 700;
+}
+.ai-reject-btn[data-v-9bfb8cb3] {
+  padding: 0.375rem 0.5625rem;
+  border: 0.03125rem solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.625rem;
+  background-color: transparent;
+}
+.ai-reject-icon[data-v-9bfb8cb3] {
+  color: #999999;
+  font-size: 0.75rem;
+}
+
+/* 空状态 */
+.empty-state[data-v-9bfb8cb3] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6.25rem 0;
+  text-align: center;
+  opacity: 0.4;
+}
+.empty-icon[data-v-9bfb8cb3] {
+  font-size: 3.75rem;
+  margin-bottom: 1rem;
+}
+.empty-title[data-v-9bfb8cb3] {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #131811;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.empty-subtitle[data-v-9bfb8cb3] {
+  font-size: 0.75rem;
+  color: #131811;
+}
+
+/* ==================== 日历视图 ==================== */
+.calendar-scroll[data-v-9bfb8cb3] {
+  /* Android 适配: scroll-view 需要明确的高度才能滚动，使用 flex: 1 获取剩余空间 */
+  flex: 1;
+  /* 确保 scroll-view 有最小高度，防止内容为空时无法滚动 */
+  min-height: 0;
+  /* uni-app scroll-view 滚动修复 */
+  height: 0;
+}
+.calendar-container[data-v-9bfb8cb3] {
+  padding: 1rem 1.5rem;
+}
+
+/* 月份导航 */
+.calendar-header[data-v-9bfb8cb3] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.month-nav-btn[data-v-9bfb8cb3] {
+  padding: 0.5rem 0.75rem;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.nav-icon[data-v-9bfb8cb3] {
+  font-size: 1rem;
+  color: #131811;
+}
+.month-title[data-v-9bfb8cb3] {
+  color: #131811;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* 星期标题 */
+.weekdays[data-v-9bfb8cb3] {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+.weekday[data-v-9bfb8cb3] {
+  flex: 1;
+  text-align: center;
+  color: #708961;
+  font-size: 0.625rem;
+  font-weight: 700;
+}
+
+/* 日历网格 */
+.calendar-grid[data-v-9bfb8cb3] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+.calendar-day[data-v-9bfb8cb3] {
+  width: calc((100% - 1.5rem) / 7);
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  position: relative;
+}
+.calendar-day-empty[data-v-9bfb8cb3] {
+  background-color: transparent;
+}
+.day-number-text[data-v-9bfb8cb3] {
+  color: #131811;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.day-has-items[data-v-9bfb8cb3] {
+  background-color: #f4f7f2;
+}
+.day-has-items .day-number-text[data-v-9bfb8cb3] {
+  color: #63ec13;
+  font-weight: 700;
+}
+.day-is-today[data-v-9bfb8cb3] {
+  border: 0.0625rem solid #63ec13;
+}
+.day-is-selected[data-v-9bfb8cb3] {
+  background-color: #63ec13;
+}
+.day-is-selected .day-number-text[data-v-9bfb8cb3] {
+  color: #ffffff;
+}
+
+/* 有行程的标记点 */
+.day-dot[data-v-9bfb8cb3] {
+  position: absolute;
+  bottom: 0.25rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  background-color: #63ec13;
+  border-radius: 50%;
+}
+
+/* 行程摘要 */
+.day-summary[data-v-9bfb8cb3] {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.summary-header[data-v-9bfb8cb3] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.03125rem solid rgba(0, 0, 0, 0.05);
+}
+.summary-title[data-v-9bfb8cb3] {
+  color: #131811;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.summary-count[data-v-9bfb8cb3] {
+  color: #708961;
+  font-size: 0.625rem;
+}
+.summary-list[data-v-9bfb8cb3] {
+  max-height: 12.5rem;
+}
+.summary-item[data-v-9bfb8cb3] {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 0.03125rem solid rgba(0, 0, 0, 0.03);
+}
+.summary-item[data-v-9bfb8cb3]:last-child {
+  border-bottom: none;
+}
+.summary-time[data-v-9bfb8cb3] {
+  color: #708961;
+  font-size: 0.625rem;
+  font-weight: 700;
+  min-width: 2.5rem;
+}
+.summary-title-text[data-v-9bfb8cb3] {
+  color: #131811;
+  font-size: 0.75rem;
+  flex: 1;
+}
+
+/* ==================== 浮动按钮 ==================== */
+.fab-add[data-v-9bfb8cb3] {
+  position: fixed;
+  /* Android 适配: bottom = 原值(200rpx) + TabBar(60px = 120rpx) + 安全区 */
+  bottom: calc(10rem + constant(safe-area-inset-bottom));
+  bottom: calc(10rem + env(safe-area-inset-bottom));
+  right: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: #63ec13;
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.fab-add[data-v-9bfb8cb3]:active {
+  transform: scale(0.95);
+}
+.fab-add-icon[data-v-9bfb8cb3] {
+  font-size: 1.5rem;
+  color: #131811;
+  font-weight: 300;
+}
+
+/* AI 生成按钮 */
+.fab-ai[data-v-9bfb8cb3] {
+  position: fixed;
+  /* Android 适配: bottom = 原值(200rpx) + TabBar(60px = 120rpx) + 安全区 */
+  bottom: calc(10rem + constant(safe-area-inset-bottom));
+  bottom: calc(10rem + env(safe-area-inset-bottom));
+  right: 5.625rem;
+  height: 3.5rem;
+  background: linear-gradient(135deg, #63ec13 0%, #4cd964 100%);
+  border-radius: 1.75rem;
+  box-shadow: 0 4px 16px rgba(99, 236, 19, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0 0.75rem;
+  z-index: 50;
+}
+.fab-ai[data-v-9bfb8cb3]:active {
+  transform: scale(0.95);
+}
+.fab-ai-icon[data-v-9bfb8cb3] {
+  font-size: 0.875rem;
+}
+.fab-ai-text[data-v-9bfb8cb3] {
+  color: #131811;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ==================== 弹窗 ==================== */
+.modal-overlay[data-v-9bfb8cb3] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  /* Android 兼容修复：提高 z-index，确保在 header（z-index: 30）之上 */
+  z-index: 999;
+  padding: 1rem;
+  /* 确保遮罩层可接收点击事件（用于关闭弹窗） */
+  pointer-events: auto;
+}
+.modal-content[data-v-9bfb8cb3] {
+  width: 100%;
+  max-width: 18.75rem;
+  background-color: #ffffff;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  padding: 2rem 1.5rem;
+  padding-bottom: 1.5rem;
+  /* 减少底部 padding，为保存按钮留空间 */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  /* 关键修复：确保弹窗内容可接收点击/输入事件 */
+  pointer-events: auto;
+  /* Android 兼容：调整高度计算方式，确保保存按钮可见 */
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  /* 防止内容区域的事件穿透到遮罩层 */
+  position: relative;
+  /* Android 兼容：使用 box-sizing 确保高度计算正确 */
+  box-sizing: border-box;
+}
+.modal-header[data-v-9bfb8cb3] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.modal-title[data-v-9bfb8cb3] {
+  color: #131811;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.modal-close[data-v-9bfb8cb3] {
+  padding: 0.5rem;
+  background-color: transparent;
+}
+.close-icon[data-v-9bfb8cb3] {
+  font-size: 1rem;
+  color: #999999;
+}
+
+/* 表单 */
+.modal-form[data-v-9bfb8cb3] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  /* Android 兼容：确保表单容器可接收事件 */
+  pointer-events: auto;
+  /* 关键修复：确保 scroll-view 内容不会被截断 */
+  min-height: 0;
+  /* 减少最大高度，为保存按钮留出空间 */
+  max-height: calc(80vh - 5rem);
+  /* 添加内边距，让内容不贴边 */
+  padding: 0.25rem 0;
+}
+
+/* AI 表单（按钮已移出，确保内容不溢出） */
+.ai-form[data-v-9bfb8cb3] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* 关键修复：移除 overflow-y，让内容自然排列 */
+  /* AI 表单内容不多，不需要滚动 */
+  pointer-events: auto;
+  /* 添加内边距，让内容不贴边 */
+  padding: 0.25rem 0;
+  /* 确保表单不会太高，按钮始终可见 */
+  max-height: calc(80vh - 6.25rem);
+}
+.form-group[data-v-9bfb8cb3] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* Android 兼容：确保表单组可接收事件 */
+  pointer-events: auto;
+}
+.form-row[data-v-9bfb8cb3] {
+  display: flex;
+  gap: 1rem;
+}
+.flex-1[data-v-9bfb8cb3] {
+  flex: 1;
+}
+.form-label[data-v-9bfb8cb3] {
+  color: #999999;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.form-input[data-v-9bfb8cb3] {
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 1rem;
+  /* 关键修复：增加 padding 和最小高度，让输入框更大更易用 */
+  padding: 0.875rem 1rem;
+  font-size: 0.9375rem;
+  color: #131811;
+  line-height: 1.5;
+  min-height: 2.75rem;
+  /* 确保输入框有足够高度 */
+  /* Android 兼容：确保输入框可聚焦 */
+  pointer-events: auto;
+  /* 确保输入框能完整显示内容 */
+  box-sizing: border-box;
+  /* 添加过渡效果，聚焦时平滑变化 */
+  transition: all 0.2s;
+}
+
+/* 聚焦状态：给输入框添加明显的边框和背景变化 */
+.form-input[data-v-9bfb8cb3]:focus {
+  background-color: #ffffff;
+  border: 0.0625rem solid #63ec13;
+  /* 确保聚焦时边框不会导致布局变化 */
+  box-sizing: border-box;
+}
+.picker-trigger[data-v-9bfb8cb3] {
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 1rem;
+  /* 关键修复：增加 padding 和最小高度，与 input 保持一致 */
+  padding: 0.875rem 1rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Android 兼容：确保 picker 可点击 */
+  pointer-events: auto;
+  position: relative;
+  /* 添加过渡效果 */
+  transition: all 0.2s;
+}
+.picker-text[data-v-9bfb8cb3] {
+  font-size: 0.9375rem;
+  color: #131811;
+  /* 确保文本不拦截点击事件 */
+  pointer-events: none;
+}
+
+/* Picker 聚焦/按下状态 */
+.picker-trigger[data-v-9bfb8cb3]:active {
+  background-color: #ffffff;
+  border: 0.0625rem solid #63ec13;
+  box-sizing: border-box;
+}
+.picker-arrow[data-v-9bfb8cb3] {
+  font-size: 0.75rem;
+  color: #999999;
+  /* 确保箭头不拦截点击事件 */
+  pointer-events: none;
+}
+.form-textarea[data-v-9bfb8cb3] {
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 1rem;
+  /* 关键修复：增加 padding 和高度，让文本域更大更易用 */
+  padding: 0.875rem 1rem;
+  font-size: 0.9375rem;
+  color: #131811;
+  line-height: 1.6;
+  min-height: 5rem;
+  height: 5rem;
+  resize: none;
+  /* Android 兼容：确保文本域可聚焦 */
+  pointer-events: auto;
+  /* 确保文本域能完整显示内容 */
+  box-sizing: border-box;
+  /* 添加过渡效果，聚焦时平滑变化 */
+  transition: all 0.2s;
+}
+
+/* 聚焦状态：给文本域添加明显的边框和背景变化 */
+.form-textarea[data-v-9bfb8cb3]:focus {
+  background-color: #ffffff;
+  border: 0.0625rem solid #63ec13;
+  /* 确保聚焦时边框不会导致布局变化 */
+  box-sizing: border-box;
+}
+.form-placeholder[data-v-9bfb8cb3] {
+  color: #999999;
+  /* 确保 placeholder 文本大小与输入文本一致 */
+  font-size: 0.9375rem;
+}
+.category-list[data-v-9bfb8cb3] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  /* Android 兼容：确保分类列表可接收事件 */
+  pointer-events: auto;
+}
+.category-btn[data-v-9bfb8cb3] {
+  padding: 0.5rem 1rem;
+  background-color: #f8f8f8;
+  border-radius: 1.5625rem;
+  /* Android 兼容：确保分类按钮可点击 */
+  pointer-events: auto;
+}
+.category-btn-active[data-v-9bfb8cb3] {
+  background-color: #63ec13;
+}
+.category-text[data-v-9bfb8cb3] {
+  color: #999999;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.category-text-active[data-v-9bfb8cb3] {
+  color: #131811;
+  font-weight: 700;
+}
+
+/* AI 选项 */
+.ai-options[data-v-9bfb8cb3] {
+  display: flex;
+  gap: 0.5rem;
+}
+.ai-option-btn[data-v-9bfb8cb3] {
+  flex: 1;
+  /* 关键修复：增加 padding 和最小高度，让按钮更易点击 */
+  padding: 0.875rem 0.75rem;
+  min-height: 2.75rem;
+  background-color: #f8f8f8;
+  border-radius: 0.75rem;
+  border: 0.0625rem solid transparent;
+  /* 添加过渡效果 */
+  transition: all 0.2s;
+}
+.ai-option-active[data-v-9bfb8cb3] {
+  background-color: rgba(99, 236, 19, 0.1);
+  border-color: #63ec13;
+}
+.ai-option-text[data-v-9bfb8cb3] {
+  color: #131811;
+  font-size: 0.875rem;
+  /* 增大字体 */
+  font-weight: 500;
+}
+.ai-option-active .ai-option-text[data-v-9bfb8cb3] {
+  color: #63ec13;
+  font-weight: 700;
+}
+
+/* 按钮按下反馈 */
+.ai-option-btn[data-v-9bfb8cb3]:active {
+  transform: scale(0.98);
+}
+.ai-tips[data-v-9bfb8cb3] {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: rgba(99, 236, 19, 0.1);
+  border-radius: 0.75rem;
+  /* 确保提示框不拦截点击事件 */
+  pointer-events: none;
+}
+.tips-icon[data-v-9bfb8cb3] {
+  font-size: 0.875rem;
+  /* 增大图标 */
+}
+.tips-text[data-v-9bfb8cb3] {
+  color: #708961;
+  font-size: 0.6875rem;
+  /* 增大字体 */
+  flex: 1;
+}
+.form-submit[data-v-9bfb8cb3] {
+  background-color: #63ec13;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 0.5rem;
+  /* 减少 margin，因为按钮现在在 scroll-view 外面 */
+  margin-bottom: 0;
+  /* 确保底部贴紧 */
+  box-shadow: 0 4px 16px rgba(99, 236, 19, 0.3);
+  /* Android 兼容：确保提交按钮可点击 */
+  pointer-events: auto;
+  position: relative;
+  /* 关键修复：固定在底部，不随滚动移动 */
+  flex-shrink: 0;
+  /* 确保按钮始终可见 */
+  align-self: flex-start;
+  width: 100%;
+}
+.form-submit[data-v-9bfb8cb3]:active {
+  transform: scale(0.98);
+}
+.submit-text[data-v-9bfb8cb3] {
+  color: #131811;
+  font-size: 1rem;
+  font-weight: 700;
+}

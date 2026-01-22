@@ -1,0 +1,257 @@
+/**
+ * 全局主题样式
+ * 定义主题相关的 CSS 变量和通用样式
+ */
+
+/* ==================== 主题变量 ==================== */
+
+/* 浅色主题变量 */
+:root {
+	--theme-background-color: #f7f8f6;
+	--theme-text-color: #131811;
+	--theme-secondary-text-color: #708961;
+	--theme-card-background-color: #ffffff;
+	--theme-border-color: rgba(0, 0, 0, 0.05);
+	--theme-shadow-color: rgba(0, 0, 0, 0.05);
+	--theme-overlay-color: rgba(0, 0, 0, 0.4);
+	--theme-navigation-bar-front-color: #000000;
+	--theme-navigation-bar-background-color: #ffffff;
+	--theme-input-background-color: #f8f8f8;
+	--theme-button-background-color: #63ec13;
+	--theme-button-text-color: #131811;
+	--theme-accent-color: #63ec13;
+}
+
+/* 深色主题变量 */
+[data-theme='dark'] {
+	--theme-background-color: #1a1a1a;
+	--theme-text-color: #ffffff;
+	--theme-secondary-text-color: #b0b0b0;
+	--theme-card-background-color: #2a2a2a;
+	--theme-border-color: rgba(255, 255, 255, 0.1);
+	--theme-shadow-color: rgba(0, 0, 0, 0.2);
+	--theme-overlay-color: rgba(0, 0, 0, 0.6);
+	--theme-navigation-bar-front-color: #ffffff;
+	--theme-navigation-bar-background-color: #1a1a1a;
+	--theme-input-background-color: #2a2a2a;
+	--theme-button-background-color: #63ec13;
+	--theme-button-text-color: #131811;
+	--theme-accent-color: #63ec13;
+}
+
+/* ==================== 主题混合器 ==================== */
+
+/* 使用主题变量 */
+.theme-background {
+	background-color: var(--theme-background-color);
+}
+
+.theme-text {
+	color: var(--theme-text-color);
+}
+
+.theme-secondary-text {
+	color: var(--theme-secondary-text-color);
+}
+
+.theme-card {
+	background-color: var(--theme-card-background-color);
+	border: 1rpx solid var(--theme-border-color);
+	box-shadow: 0 1px 3px var(--theme-shadow-color);
+}
+
+.theme-overlay {
+	background-color: var(--theme-overlay-color);
+}
+
+.theme-input {
+	background-color: var(--theme-input-background-color);
+	color: var(--theme-text-color);
+}
+
+.theme-button {
+	background-color: var(--theme-button-background-color);
+	color: var(--theme-button-text-color);
+}
+
+/* ==================== 主题切换动画 ==================== */
+
+* {
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ==================== 页面容器 ==================== */
+
+.page-container {
+	min-height: 100vh;
+	background-color: var(--theme-background-color);
+	color: var(--theme-text-color);
+}
+
+/* ==================== 导航栏 ==================== */
+
+.app-bar {
+	background-color: var(--theme-navigation-bar-background-color);
+	color: var(--theme-text-color);
+}
+
+.bar-icon {
+	color: var(--theme-text-color);
+}
+
+.bar-title {
+	color: var(--theme-text-color);
+}
+
+/* ==================== 卡片 ==================== */
+
+.card {
+	background-color: var(--theme-card-background-color);
+	border: 1rpx solid var(--theme-border-color);
+	box-shadow: 0 1px 3px var(--theme-shadow-color);
+	border-radius: 32rpx;
+}
+
+/* ==================== 按钮 ==================== */
+
+.btn-primary {
+	background-color: var(--theme-button-background-color);
+	color: var(--theme-button-text-color);
+	border-radius: 48rpx;
+	padding: 24rpx 48rpx;
+	font-weight: 700;
+}
+
+.btn-secondary {
+	background-color: var(--theme-input-background-color);
+	color: var(--theme-text-color);
+	border-radius: 48rpx;
+	padding: 24rpx 48rpx;
+	font-weight: 700;
+}
+
+/* ==================== 输入框 ==================== */
+
+.input-field {
+	background-color: var(--theme-input-background-color);
+	color: var(--theme-text-color);
+	border: 1rpx solid var(--theme-border-color);
+	border-radius: 32rpx;
+	padding: 24rpx 32rpx;
+	font-size: 28rpx;
+}
+
+/* ==================== 文本 ==================== */
+
+.text-primary {
+	color: var(--theme-text-color);
+}
+
+.text-secondary {
+	color: var(--theme-secondary-text-color);
+}
+
+.text-accent {
+	color: var(--theme-accent-color);
+}
+
+/* ==================== 弹窗 ==================== */
+
+.modal-overlay {
+	background-color: var(--theme-overlay-color);
+}
+
+.modal-content {
+	background-color: var(--theme-card-background-color);
+	border-top-left-radius: 64rpx;
+	border-top-right-radius: 64rpx;
+	box-shadow: 0 8px 32px var(--theme-shadow-color);
+}
+
+/* ==================== 滚动条 ==================== */
+
+::-webkit-scrollbar {
+	width: 8rpx;
+	height: 8rpx;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--theme-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--theme-secondary-text-color);
+	border-radius: 4rpx;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--theme-text-color);
+}
+
+/* ==================== Tab Bar ==================== */
+
+.tab-bar {
+	background-color: var(--theme-navigation-bar-background-color);
+	border-top: 1rpx solid var(--theme-border-color);
+}
+
+.tab-bar-item {
+	color: var(--theme-secondary-text-color);
+}
+
+.tab-bar-item-active {
+	color: var(--theme-accent-color);
+}
+
+/* ==================== 加载状态 ==================== */
+
+.loading-spinner {
+	border: 4rpx solid var(--theme-border-color);
+	border-top: 4rpx solid var(--theme-accent-color);
+	border-radius: 50%;
+	width: 80rpx;
+	height: 80rpx;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+/* ==================== 空状态 ==================== */
+
+.empty-state {
+	color: var(--theme-secondary-text-color);
+}
+
+.empty-icon {
+	opacity: 0.4;
+}
+
+.empty-title {
+	color: var(--theme-text-color);
+}
+
+.empty-subtitle {
+	color: var(--theme-secondary-text-color);
+}
+
+/* ==================== 开关组件 ==================== */
+
+.switch {
+	background-color: var(--theme-border-color);
+}
+
+.switch-active {
+	background-color: var(--theme-accent-color);
+}
+
+/* ==================== 选择器 ==================== */
+
+.picker {
+	background-color: var(--theme-input-background-color);
+	color: var(--theme-text-color);
+	border: 1rpx solid var(--theme-border-color);
+	border-radius: 24rpx;
+}
